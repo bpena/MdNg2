@@ -11,15 +11,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var button_1 = require('@angular2-material/button');
 var card_1 = require('@angular2-material/card');
+var toolbar_1 = require('@angular2-material/toolbar');
+var sidenav_1 = require('@angular2-material/sidenav');
 var icon_1 = require('@angular2-material/icon');
+var module_component_1 = require('./module/module.component');
+var login_component_1 = require('./security/login/login.component');
 var AppComponent = (function () {
     function AppComponent() {
+        this.tipo = 'side';
     }
+    AppComponent.prototype.diMiNombre = function (name) {
+        console.log('My name is: ', name);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/app.component.html',
-            directives: [button_1.MdButton, card_1.MdCard, icon_1.MdIcon],
+            directives: [login_component_1.LoginForm, button_1.MdButton, card_1.MdCard, icon_1.MdIcon, toolbar_1.MdToolbar, sidenav_1.MD_SIDENAV_DIRECTIVES, module_component_1.MyModule],
             providers: [icon_1.MdIconRegistry]
         }), 
         __metadata('design:paramtypes', [])

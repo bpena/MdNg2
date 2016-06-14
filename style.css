@@ -1,0 +1,12 @@
+.md-toolbar {
+    background: #1d2127 !important;
+    color: aquamarine !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    padding: 0 !important;
+}
+
+.md-icon-button {
+    min-width: 40px !important;
+    padding: 0 5px !important;
+}
