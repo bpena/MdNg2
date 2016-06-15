@@ -1,10 +1,10 @@
-<md-card>
+<md-card class="login-form">
     <md-toolbar color="primary">Login</md-toolbar>
     <md-card-content>
         <form>
             <md-input placeholder="Username" [(ngModel)]="username"></md-input>
             <md-input placeholder="Password" [(ngModel)]="password" type="password" ></md-input>
-            <md-button (click)="login()">Login</md-button>
+            <button md-raised-button (click)="login()">Login</button>
         </form>
     </md-card-content>
 </md-card>

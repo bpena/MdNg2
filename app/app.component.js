@@ -16,21 +16,26 @@ var sidenav_1 = require('@angular2-material/sidenav');
 var icon_1 = require('@angular2-material/icon');
 var module_component_1 = require('./module/module.component');
 var login_component_1 = require('./security/login/login.component');
+var security_service_1 = require("./security/security.service");
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(securityService) {
+        this.securityService = securityService;
         this.tipo = 'side';
     }
-    AppComponent.prototype.diMiNombre = function (name) {
-        console.log('My name is: ', name);
+    AppComponent.prototype.ngOnInit = function () {
+        this.isGuest$ = this.securityService.isGuest$;
+    };
+    AppComponent.prototype.printValue = function () {
+        console.log('value is: ', this.isGuest$);
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/app.component.html',
             directives: [login_component_1.LoginForm, button_1.MdButton, card_1.MdCard, icon_1.MdIcon, toolbar_1.MdToolbar, sidenav_1.MD_SIDENAV_DIRECTIVES, module_component_1.MyModule],
-            providers: [icon_1.MdIconRegistry]
+            providers: [icon_1.MdIconRegistry, security_service_1.SecurityService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [security_service_1.SecurityService])
     ], AppComponent);
     return AppComponent;
 }());

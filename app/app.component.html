@@ -43,11 +43,11 @@
                 </button>
             </md-toolbar>
 
-            <login-form></login-form>
+            <login-form *ngIf="isGuest$"></login-form>
 
             <md-divider></md-divider>
             <button md-raised-button class="md-raised md-primary" *ngIf="!left.opened" (click)="left.toggle()">Toggle Left Sidenav</button>
-            <button md-raised-button class="md-raised md-primary" (click)="right.toggle()">Toggle Right Sidenav</button>
+            <button md-raised-button class="md-raised md-primary" (click)="printValue()">Toggle Right Sidenav</button>
         </md-content>
     </md-sidenav-layout>
 </div>
