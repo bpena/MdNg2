@@ -9,8 +9,7 @@ import {SecurityService} from "../security.service";
     selector: 'login-form',
     templateUrl: __dirname + '/login.component.html',
     styles: ['.login-form{width: 200px;} .login button {float: rigth;}'],
-    directives: [MdButton, MD_CARD_DIRECTIVES, MD_INPUT_DIRECTIVES, MdToolbar],
-    providers: [SecurityService]
+    directives: [MdButton, MD_CARD_DIRECTIVES, MD_INPUT_DIRECTIVES, MdToolbar]
 })
 
 export class LoginForm {

@@ -2,20 +2,22 @@ import {Injectable} from '@angular/core';
 import {User} from "./users/user";
 import {USERS} from "./mocks/mockUser.service"
 import {Subject} from "rxjs/Subject";
+import {Session} from "./session.interface";
 
 @Injectable()
 export class SecurityService {
     public currentUser: User;
-    private isGuest: boolean;
-    private _isGuest$ : Subject<boolean>;
+    public session:Session;
 
     constructor() {
-        this.isGuest = true;
-        this._isGuest$ = <Subject<boolean>>new Subject();
+        this.session = {
+            currentUser : null,
+            isGuest : true
+        };
     }
 
-    get isGuest$() {
-        return this._isGuest$.asObservable();
+    getSession(): Session {
+        return this.session;
     }
 
     login(username, password) : User {
@@ -24,8 +26,17 @@ export class SecurityService {
             if (user.username == username && user.password == password)
                 this.currentUser = user;
         }
-        this.isGuest = this.currentUser == null;
-        this._isGuest$.next(this.isGuest);
+        this.updateSession();
         return this.currentUser;
+    }
+
+    logout() : void {
+        this.currentUser = null;
+        this.updateSession();
+    }
+
+    private updateSession() : void {
+        this.session.currentUser = this.currentUser;
+        this.session.isGuest = this.currentUser == null;
     }
 }
